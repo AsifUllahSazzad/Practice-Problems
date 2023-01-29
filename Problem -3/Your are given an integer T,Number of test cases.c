@@ -1,17 +1,27 @@
 #include<stdio.h>
 int main()
 {
-    int T,n;
-    scanf("%d",&T);
-    int i,j;
+    FILE*inputf=fopen("input.txt","r");
+    if(inputf==NULL)
+    {
+        printf("Input file not found.\n");
+    }
+    FILE*outputf=fopen("output.txt","w");
+    int T;
+    fscanf(inputf,"%d",&T);
+    int i,n,j;
     for(i=1;i<=T;i++)
     {
-        scanf("%d",&n);
+        fscanf(inputf,"%d",&n);
         for(j=n;j>=-n;j--)
         {
-            printf("%d ",j);
+            fprintf(outputf,"%d ",j);
         }
-        printf("\n");
+        // printf("\n");
+        for(j=n;j<=-n;j++)
+        {
+            fprintf(outputf,"%d ",j);
+        }
+        fprintf(outputf,"\n");
     }
-    return 0;
 }
